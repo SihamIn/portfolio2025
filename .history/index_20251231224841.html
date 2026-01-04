@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <met#aeb3b8et="utf-8">
+        <title>Portfolio</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <style>
+            #portfolio-flters {
+                margin-bottom: 30px !important;
+            }
+            .portfolio-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 40px;
+                margin-top: 20px;
+                width: 100%;
+            }
+            .portfolio-item {
+                flex: 0 0 calc((100% - 40px) / 2);
+                width: calc((100% - 40px) / 2);
+                max-width: calc((100% - 40px) / 2);
+                box-sizing: border-box;
+            }
+            .portfolio-item .position-relative {
+                height: 280px;
+                width: 100%;
+                margin-bottom: 0;
+                border-radius: 8px;
+                overflow: hidden;
+                border: none;
+                transition: all 0.3s ease;
+            }
+            .portfolio-item .position-relative:hover {
+                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+                transform: translateY(-5px);
+            }
+            .portfolio-item .position-relative img,
+            .portfolio-item .position-relative video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+                display: block;
+                margin-left: 20px;
+                margin-top: 10px;
+            }
+            .portfolio-item .position-relative:hover img,
+            .portfolio-item .position-relative:hover video {
+                transform: scale(1.05);
+            }
+            .portfolio-item .position-relative a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            .play-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #FFFFFF;
+                font-size: 3rem;
+                opacity: 0.9;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            .portfolio-item .position-relative:hover .play-overlay {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            .portfolio-item .position-relative video {
+                display: block;
+            }
+            @media (max-width: 768px) {
+                .portfolio-item {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    width: 100%;
+                }
+                .portfolio-container {
+                    gap: 20px;
+                    margin-top: 15px;
+                }
+                .portfolio-item .position-relative {
+                    height: 250px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Header Navigation -->
+        <header class="portfolio-header">
+            <div class="header-container">
+                <div class="header-name">ALILOU SIHAM</div>
+                <nav class="header-nav">
+                    <a href="#home" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="nav-link" data-i18n="nav.about">À propos de moi</a>
+                    <a href="#competences" class="nav-link" data-i18n="nav.competences">Compétences</a>
+                    <a href="#formation" class="nav-link" data-i18n="nav.formation">Formation</a>
+                    <div class="nav-dropdown">
+                        <a href="#portfolio" class="nav-link dropdown-toggle" data-i18n="nav.portfolio">Portfolio</a>
+                        <div class="dropdown-menu">
+                            <a href="#experience" class="dropdown-item" data-i18n="nav.experience">Expérience</a>
+                            <a href="#contact" class="dropdown-item" data-i18n="nav.contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="header-social-icons">
+                        <a href="#" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </nav>
+                <button class="menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section avec Bannière LinkedIn-style -->
+        <div class="hero-section" id="home">
+            <div class="hero-container">
+                <div class="hero-left">
+                    <img src="img/ss.jpg" alt="Alilou Siham" class="hero-portrait wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                </div>
+                <div class="hero-right">
+                    <div class="hero-content">
+                        <div class="hero-description wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <h1 class="hero-name">Siham Alilou</h1>
+                            <div class="hero-profession">
+                                <span class="hero-title-text" data-i18n="hero.title">Ingénieure de système informatique Web & Mobile</span>
+                                <span class="hero-separator-inline">|</span>
+                                <span class="hero-subtitle" data-i18n="hero.subtitle">Développeuse Front End</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <a href="#" class="btn-explore" data-i18n="hero.downloadCV">Télécharger le CV</a>
+                            <button id="testLangBtn" class="btn-explore test-lang-btn" title="Changer la langue">
+                                <span class="current-language">🇫🇷</span>
+                                <span class="language-text">FR</span>
+                            </button>
+                        </div>
+                        <div class="page-indicator wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s" data-i18n="hero.pageIndicator">Page | 01</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenu Principal -->
+        <div class="container main-content">
+            <div class="row">
+                <div class="col-12">
+                   
+                    <section class="py-5 border-bottom">
+                        <h1 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s" data-i18n="about.title">à propos de moi </h1>
+                        <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-i18n="about.greeting">BONJOUR !</h3><br>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-i18n="about.description1">Je m'appelle Siham Alilou, je suis développeuse Front-end passionnée, spécialisée dans la création d'interfaces web modernes, performantes et orientées expérience utilisateur. Je conçois et développe des applications web responsives en alliant design élégant, optimisation des performances et qualité technique. Autonome, méthodique et dotée d'un bon leadership, je mène les projets de A à Z et collabore efficacement au sein d'équipes innovantes. Je recherche des opportunités stimulantes pour contribuer à des solutions digitales de haute qualité, avec des projets conçus et réalisés de bout en bout.</p>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-i18n="about.description2">Vous trouverez ci-dessous le lien vers les projets réels auxquels j'ai participé, que j'ai conçus et développés de bout en bout, de l'idée initiale jusqu'à la finalisation du projet : <a href="https://marketplace.soluxuryhospitality.io/connect" target="_blank">Soluxury Hospitality</a></p>
+                        <div class="row mb-4">
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.name"> nom : </span> ALILOU SIHAM
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.education"> Niveau d'éducation : </span> BAC+5
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.specialization"> Spécialisation : </span>  Ingénierie du Développement Web et Mobile
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.position"> poste : </span>  Développeuse Front-end
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.phone">Télephone:</span> 
+                                 06-56-10-91-78
+                            </div>
+                            <div class="col-sm-6 py-1">
+                                <span class="fw-medium text-primary" data-i18n="about.email">Email:</span> sihamalilou89@gmail.com
+                            </div>
+                           
+                         
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-4 col-lg-6 col-xl-4">
+                                <div class="d-flex bg-secondary p-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">+6</h1>
+                                    <div class="ps-3">
+                                        <p class="mb-0" data-i18n="about.stages">Stages</p>
+                                        <h5 class="mb-0" data-i18n="about.experience">Expérience</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-6 col-xl-4">
+                                <div class="d-flex bg-secondary p-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">+5</h1>
+                                    <div class="ps-3">
+                                        <p class="mb-0" data-i18n="about.total">Total</p>
+                                        <h5 class="mb-0" data-i18n="about.certificates">Certificats</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-6 col-xl-4">
+                                <div class="d-flex bg-secondary p-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">+7</h1>
+                                    <div class="ps-3">
+                                        <p class="mb-0" data-i18n="about.total">Total</p>
+                                        <h5 class="mb-0" data-i18n="about.projects">Projets</h5>
+                                    </div>
+                                </div>
+                            </div> <div class="col-md-4 col-lg-6 col-xl-4">
+                                <div class="d-flex bg-secondary p-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">+1</h1>
+                                    <div class="ps-3">
+                                        <p class="mb-0" data-i18n="about.total">Total</p>
+                                        <h5 class="mb-0" data-i18n="about.works">Travails</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- About End -->
+                    <div id="about"></div>
+
+                    <!-- Skills Start -->
+                    <section class="py-5 border-bottom" id="competences">
+                        <h1 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s" data-i18n="competences.title">Compétences</h1>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="skill mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">HTML</p>
+                                        <p class="mb-2">95%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">JavaScript</p>
+                                        <p class="mb-2">85%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">CSS</p>
+                                        <p class="mb-2">90%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">SCSS</p>
+                                        <p class="mb-2">88%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="skill mb-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">TypeScript</p>
+                                        <p class="mb-2">82%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">React</p>
+                                        <p class="mb-2">80%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">Vue.js</p>
+                                        <p class="mb-2">75%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">Bootstrap</p>
+                                        <p class="mb-2">90%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Skills End -->
+
+                    <!-- Expericence Start -->
+                    <section class="py-5" id="formation">
+                        <h1 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s" data-i18n="formation.title">Formation</h1>
+                        <div class="border-start border-2 border-light pt-2 ps-5">
+                            <div class="position-relative mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">Diplôme d'ingénieur d'État des Systèmes informatiques en Développement Web et Mobile</h5>
+                                <p class="mb-2"> <small>2025</small></p>
+                                <p>ISGA: Institut Supérieur d'ingénierie et des Affaires, Fes</p>
+                            </div>
+                            <div class="position-relative mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">Diplôme technicien spécialisé en développement
+                                    informatique</h5>
+                                <p class="mb-2"> <small>2022</small></p>
+                                <p>Elosig :Ecole Logarithme Spécialisée en informatique de Gestion, Fes</p>
+                            </div>
+                           
+
+                            <div class="position-relative mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">Diplôme technicien en maintenance de support informatique réseau :
+                                </h5>
+                                <p class="mb-2"> <small>2019</small></p>
+                                <p>ISTA , Sefrou .
+                                </p>
+                            </div>
+                        </div>
+                        <h2 class="title pb-3 mb-4 mt-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-i18n="formation.certificates">Certificats</h2>
+                        <div class="border-start border-2 border-light pt-2 ps-5">
+                            <div class="position-relative mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">Certificat CCNA1 et 2 Routing and Switching: Introduction to Networks</h5>
+                                <p class="mb-2"> <small>2018</small></p>
+                                <p>ISTA SEFROU</p>
+                            </div>
+                            <div class="position-relative mb-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">Certificat Microsoft Word</h5>
+                                <p class="mb-2"> <small>2018</small></p>
+                                <p>ISTA SEFROU</p>
+                            </div>
+                        </div>
+
+
+
+                        
+                    </section>
+             
+                    <!-- Services Start -->
+                    <section class="py-5 border-bottom" id="competences-detail">
+                        <h1 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s">COMPÉTENCES</h1>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="service-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                    <i class="fa fa-2x fa-laptop-code mx-auto mb-4"></i>
+                                    <h5 class="mb-2">•	Langages  </h5>
+                                    <p class="mb-0">HTML, JavaScript, CSS, SCSS, TypeScript</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="service-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <i class="fab fa-2x fa-android mx-auto mb-4"></i>
+                                    <h5 class="mb-2"> •	Frameworks et Bibliotique  </h5>
+                                    <p class="mb-0">React, Angular, Vue.js, Ionic, jQuery, Tailwind CSS, Bootstrap</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="service-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                                    <i class="fa fa-2x fa-search mx-auto mb-4"></i>
+                                    <h5 class="mb-2"> •	Bases de données  </h5>
+                                    <p class="mb-0">   MS Access, PostgreSQL, Oracle, MySQL
+                                   </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="service-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <i class="fa fa-2x fa-edit mx-auto mb-4"></i>
+                                    <h5 class="mb-2">•	Réseaux Informatiques </h5>
+                                    <p class="mb-0"> Administration sous Windows et Linux, Routage et Commutation (CCNA, WAN)
+                                       
+                                       </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Services End -->
+
+                    <!-- Portfolio Start -->
+                    <section class="py-5 border-bottom" id="portfolio">
+                        <h1 class="title pb-3 mb-4 wow fadeInUp" data-wow-duration="1s" data-i18n="portfolio.title">Portfolio</h1>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 text-center mb-2">
+                                        <ul class="list-inline mb-4" id="portfolio-flters">
+                                            <li class="btn btn-secondary active"  data-filter="*" data-i18n="portfolio.all"><i class="fa fa-star me-2"></i>All</li>
+                                            <li class="btn btn-secondary" data-filter=".first" data-i18n="portfolio.design"><i class="fa fa-laptop-code me-2"></i>Design</li>
+                                            <li class="btn btn-secondary" data-filter=".second" data-i18n="portfolio.development"><i class="fa fa-mobile-alt me-2"></i>Development</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="portfolio-container">
+                                    <div class="portfolio-item second wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/iaweb.jpg" data-lightbox="portfolio" data-title="Projet IAWEB">
+                                                <img class="img-fluid w-100" src="img/imgia.jpg" alt="Projet IAWEB">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-item second wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/test1-marketplace.mp4" data-lightbox="portfolio" data-title="Marketplace">
+                                                <video class="img-fluid w-100" muted>
+                                                    <source src="img/test1-marketplace.mp4" type="video/mp4">
+                                                </video>
+                                                <div class="play-overlay">
+                                                    <i class="fa fa-play-circle"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-item first wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/projet2.jpg" data-lightbox="portfolio" data-title="Projet 2">
+                                                <img class="img-fluid w-100" src="img/projet2.jpg" alt="Projet 2">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-item second wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/DF.jpg" data-lightbox="portfolio" data-title="Projet DF">
+                                                <img class="img-fluid w-100" src="img/DF.jpg" alt="Projet DF">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-item first wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/projet3.jpg" data-lightbox="portfolio" data-title="Projet 3">
+                                                <img class="img-fluid w-100" src="img/projet3.jpg" alt="Projet 3">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-item second wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+                                        <div class="position-relative overflow-hidden">
+                                            <a href="img/OO.jpg" data-lightbox="portfolio" data-title="Projet OO">
+                                                <img class="img-fluid w-100" src="img/OO.jpg" alt="Projet OO">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Portfolio End -->
+
+                    <!-- Testimonial Start -->
+                    <section class="py-5 border-bottom" id="experience">
+                        <h1 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s" data-i18n="experience.title">EXPÉRIENCE PROFESSIONNELLE</h1>
+                        <div class="owl-carousel testimonial-carousel">
+                            <div class="text-left">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p class="fs-4 mb-4">Application Web de Marketplace  Sécurisée
+
+                                Stage PFE – Fès | RTCF | Août – Octobre 2025
+                                Développement d’une application web de marketplace NFT avec wallet intégré, permettant la publication, la gestion et la vente de NFT.
+
+                                Implémentation des fonctionnalités de sécurité et de gestion des utilisateurs.
+                                
+                                Technologies utilisées : Node.js, Ionic,Angular, XAMPP .
+                                
+                                Participation à la conception de l’architecture et à l’intégration des fonctionnalités clés.
+                                </p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid" src="img/token3.webp" style="width: 60px; height: 60px;">
+                                <div class="ps-3">
+                                    <p class="text-primary fs-5 mb-1">Soluxury Hospitality</p>
+                                    <i>Fés</i>
+                                    <p class="text-primary fs-5 mb-1">  <a href="https://marketplace.soluxuryhospitality.io/connect" target="_blank">lien</a></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-left">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                            <p class="fs-4 mb-4">Application Web CRM – Gestion des Ressources Humaines
+
+                                Stage PFE– Marrakech | IAWEB | Avril – Juillet 2025
+                                
+                                Développement d’une application web CRM dédiée à la gestion des ressources humaines.
+
+                                Digitalisation complète des processus RH : gestion des employés, contrats, congés et suivi administratif.
+
+                                 Développement basé sur Spring Boot, Angular et PostgreSQL.
+
+                                Collaboration à l’analyse des besoins et à l’implémentation des modules métier.
+
+                                </p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid" src="img/ia.png" style="width: 60px; height: 60px;">
+                                <div class="ps-3">
+                                    <p class="text-primary fs-5 mb-1">IAWEB</p>
+                                    <i>Marrekech</i>
+                                    <p class="text-primary fs-5 mb-1"><a href="https://my.havetdigital.fr/" target="_blank">Lien</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                            <div class="text-left">
+                                <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                                <p class="fs-4 mb-4">Développeuse Mobile Ionic / Laravel (Stage) -  (Juillet 2024 – Août 2024) - Développement d'une application mobile pour la comparaison de primes d’assurance multi-compagnies.</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid" src="img/log.png" style="width: 60px; height: 60px;">
+                                    <div class="ps-3">
+                                        <p class="text-primary fs-5 mb-1">OCTOBOT</p>
+                                        <i>Fés</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                                <p class="fs-4 mb-4">Développeuse PHP / Laravel (Stage) ,  (Juin 2023 – Août 2023) - Développement d'un site web de gestion de scolarité et d'un site e-commerce pour la vente de produits cosmétiques.</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid" src="img/SS.jpeg" style="width: 60px; height: 60px;">
+                                    <div class="ps-3">
+                                        <p class="text-primary fs-5 mb-1">Im-Creative</p>
+                                        <i>Fés</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                                <p class="fs-4 mb-4">Développeuse Web WordPress (Stage) -  (Juillet 2018 – Août 2018) - Création de sites web pour le crowdfunding et installation de plugins SEO.</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid" src="img/images.jpeg" style="width: 60px; height: 60px;">
+                                    <div class="ps-3">
+                                        <p class="text-primary fs-5 mb-1">T-Creative</p>
+                                        <i>Fés</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Testimonial End -->
+
+                    <!-- Contact Start -->
+                    <section class="py-5" id="contact">
+                        <h2 class="title pb-3 mb-5 wow fadeInUp" data-wow-duration="1s"><span data-i18n="contact.title">Contact</span> <span data-i18n="contact.contactMe">moi</span> </h2>
+					
+
+                            <div class="info">
+
+                                <h6> <i class="fa fa-envelope-o"></i> <span data-i18n="contact.email">Email</span>  : sihamalilou89@gmail.com </h6>
+                                <h6> <i class="fa fa-phone"></i> <span data-i18n="contact.tel">Tel</span>  : 06-56-10-91-78 </h6>
+                                <h6> <i class="fa fa-home"></i> <span data-i18n="contact.address">Adresse</span>  : Fès </h6>
+                            </div></a></p>
+                            <br>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 bg-secondary" id="name" name="name" placeholder="" required>
+                                        <label for="name" data-i18n="contact.name">Nom <span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control border-0 bg-secondary" id="email" name="email" placeholder="" required>
+                                        <label for="email">Email <span class="text-danger">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 bg-secondary" id="subject" name="subject" placeholder="">
+                                        <label for="subject" data-i18n="contact.subject">Objet</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0 bg-secondary" placeholder="" id="message" name="message" style="height: 200px" required></textarea>
+                                        <label for="message" data-i18n="contact.message">Message <span class="text-danger">*</span></label> 
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit" data-i18n="contact.send">Envoyer Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                    <!-- Contact End -->
+
+                    <!-- Footer Start -->
+                    <section>
+                        <div class="bg-secondary text-light text-center p-5">
+                            <div class="d-flex justify-content-center mb-4">
+                                <a class="btn btn-dark btn-square mx-1" href="#"><i class="fab fa-github"></i></a>
+                                <a class="btn btn-dark btn-square mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-dark btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="d-flex justify-content-center mb-3">
+                                <a class="text-light px-3 border-end" href="#" data-i18n="footer.privacy">Confidentialité</a>
+                                <a class="text-light px-3 border-end" href="#" data-i18n="footer.terms">Conditions</a>
+                                <a class="text-light px-3 border-end" href="#" data-i18n="footer.faqs">FAQs</a>
+                                <a class="text-light px-3" href="#" data-i18n="footer.help">Aide</a>
+                            </div>
+                            
+                            <p class="m-0">&copy; <span data-i18n="footer.rights">Tous droits réservés. Réalisé par <a href="#">ALILOU SIHAM</a></span></p>
+                            
+                    <!-- Footer End -->
+                </div>
+            </div>
+        </div>
+        </div>
+
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top" id="home"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/typed/typed.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Translations -->
+        <script src="js/translations.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="js/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+</html>

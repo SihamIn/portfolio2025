@@ -1,0 +1,282 @@
+(function ($) {
+    "use strict";
+
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+    
+    
+    // Initiate the wowjs
+    new WOW().init();
+
+
+    // Facts counter
+    $('[data-toggle="counter-up"]').counterUp({
+        delay: 10,
+        time: 2000
+    });
+
+
+    // Typed Initiate
+    if ($('.typed-text-output').length == 1) {
+        var typed_strings = $('.typed-text').text();
+        var typed = new Typed('.typed-text-output', {
+            strings: typed_strings.split(', '),
+            typeSpeed: 100,
+            backSpeed: 20,
+            smartBackspace: false,
+            loop: true
+        });
+    }
+
+
+    // Smooth scrolling to section
+    $(".btn-scroll, .nav-link:not(.dropdown-toggle), .dropdown-item").on('click', function (event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            
+            $('html, body').animate({
+                scrollTop: $(this.hash).offset().top - 60
+            }, 1500, 'easeInOutExpo');
+        }
+    });
+    
+    
+    // Skills
+    $('.skill').waypoint(function () {
+        $('.progress .progress-bar').each(function () {
+            $(this).css("width", $(this).attr("aria-valuenow") + '%');
+        });
+    }, {offset: '80%'});
+
+
+    // Portfolio isotope and filter
+    var portfolioIsotope = $('.portfolio-container').isotope({
+        itemSelector: '.portfolio-item',
+        layoutMode: 'fitRows'
+    });
+    $('#portfolio-flters li').on('click', function () {
+        $("#portfolio-flters li").removeClass('active');
+        $(this).addClass('active');
+
+        portfolioIsotope.isotope({filter: $(this).data('filter')});
+    });
+
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1500,
+        dots: true,
+        loop: true,
+        items: 1
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+    
+    // Dropdown menu toggle
+    $('.dropdown-toggle').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $dropdown = $(this).closest('.nav-dropdown');
+        $('.nav-dropdown').not($dropdown).removeClass('active');
+        $dropdown.toggleClass('active');
+    });
+    
+    // Close dropdown when clicking on dropdown item (except language items)
+    $('.dropdown-item').on('click', function (e) {
+        if (!$(this).hasClass('language-item')) {
+            $('.nav-dropdown').removeClass('active');
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('.nav-dropdown').length) {
+            $('.nav-dropdown').removeClass('active');
+        }
+    });
+    
+    // Translation system
+    var currentLang = localStorage.getItem('language') || 'fr';
+    
+    function changeLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('language', lang);
+        
+        // Wait for translations to be loaded
+        if (typeof translations === 'undefined') {
+            console.error('Translations not loaded, retrying...');
+            setTimeout(function() {
+                changeLanguage(lang);
+            }, 100);
+            return;
+        }
+        
+        var t = translations[lang];
+        if (!t) {
+            console.error('Translation for language ' + lang + ' not found');
+            return;
+        }
+        
+        console.log('Changing language to:', lang, 'Translations available:', !!t);
+        
+        // Navigation
+        $('[data-i18n="nav.home"]').text(t.nav.home);
+        $('[data-i18n="nav.about"]').text(t.nav.about);
+        $('[data-i18n="nav.competences"]').text(t.nav.competences);
+        $('[data-i18n="nav.formation"]').text(t.nav.formation);
+        $('[data-i18n="nav.portfolio"]').text(t.nav.portfolio);
+        $('[data-i18n="nav.experience"]').text(t.nav.experience);
+        $('[data-i18n="nav.contact"]').text(t.nav.contact);
+        
+        // Hero section
+        $('[data-i18n="hero.title"]').text(t.hero.title);
+        $('[data-i18n="hero.subtitle"]').text(t.hero.subtitle);
+        $('[data-i18n="hero.downloadCV"]').text(t.hero.downloadCV);
+        $('[data-i18n="hero.pageIndicator"]').text(t.hero.pageIndicator);
+        
+        // About section
+        $('[data-i18n="about.title"]').text(t.about.title);
+        $('[data-i18n="about.greeting"]').text(t.about.greeting);
+        $('[data-i18n="about.description1"]').text(t.about.description1);
+        $('[data-i18n="about.description2"]').html(t.about.description2 + ' <a href="https://marketplace.soluxuryhospitality.io/connect" target="_blank">Soluxury Hospitality</a>');
+        $('[data-i18n="about.name"]').text(t.about.name);
+        $('[data-i18n="about.education"]').text(t.about.education);
+        $('[data-i18n="about.specialization"]').text(t.about.specialization);
+        $('[data-i18n="about.position"]').text(t.about.position);
+        $('[data-i18n="about.phone"]').text(t.about.phone);
+        $('[data-i18n="about.email"]').text(t.about.email);
+        $('[data-i18n="about.stages"]').text(t.about.stages);
+        $('[data-i18n="about.experience"]').text(t.about.experience);
+        $('[data-i18n="about.total"]').text(t.about.total);
+        $('[data-i18n="about.certificates"]').text(t.about.certificates);
+        $('[data-i18n="about.projects"]').text(t.about.projects);
+        $('[data-i18n="about.works"]').text(t.about.works);
+        
+        // Competences
+        $('[data-i18n="competences.title"]').text(t.competences.title);
+        
+        // Formation
+        $('[data-i18n="formation.title"]').text(t.formation.title);
+        $('[data-i18n="formation.certificates"]').text(t.formation.certificates);
+        
+        // Portfolio
+        $('[data-i18n="portfolio.title"]').text(t.portfolio.title);
+        var $allBtn = $('[data-i18n="portfolio.all"]');
+        var $designBtn = $('[data-i18n="portfolio.design"]');
+        var $devBtn = $('[data-i18n="portfolio.development"]');
+        if ($allBtn.length) {
+            $allBtn.html('<i class="fa fa-star me-2"></i>' + t.portfolio.all);
+        }
+        if ($designBtn.length) {
+            $designBtn.html('<i class="fa fa-laptop-code me-2"></i>' + t.portfolio.design);
+        }
+        if ($devBtn.length) {
+            $devBtn.html('<i class="fa fa-mobile-alt me-2"></i>' + t.portfolio.development);
+        }
+        
+        // Experience
+        $('[data-i18n="experience.title"]').text(t.experience.title);
+        
+        // Contact
+        $('[data-i18n="contact.title"]').text(t.contact.title);
+        $('[data-i18n="contact.contactMe"]').text(t.contact.contactMe);
+        $('[data-i18n="contact.email"]').text(t.contact.email);
+        $('[data-i18n="contact.tel"]').text(t.contact.tel);
+        $('[data-i18n="contact.address"]').text(t.contact.address);
+        $('[data-i18n="contact.whatsapp"]').text(t.contact.whatsapp);
+        $('[data-i18n="contact.name"]').html(t.contact.name + ' <span class="text-danger">*</span>');
+        $('[data-i18n="contact.subject"]').text(t.contact.subject);
+        $('[data-i18n="contact.message"]').html(t.contact.message + ' <span class="text-danger">*</span>');
+        $('[data-i18n="contact.send"]').text(t.contact.send);
+        
+        // Footer
+        $('[data-i18n="footer.privacy"]').text(t.footer.privacy);
+        $('[data-i18n="footer.terms"]').text(t.footer.terms);
+        $('[data-i18n="footer.faqs"]').text(t.footer.faqs);
+        $('[data-i18n="footer.help"]').text(t.footer.help);
+        $('[data-i18n="footer.rights"]').html(t.footer.rights + ' <a href="#">ALILOU SIHAM</a>');
+        
+        // Update flag and text in button
+        var text = lang === 'fr' ? 'FR' : 'EN';
+        var $btn = $('#testLangBtn');
+        if ($btn.length) {
+            var $flagSpan = $btn.find('.current-language');
+            var flagSvg = lang === 'fr' 
+                ? '<svg class="flag-svg" viewBox="0 0 640 480" width="20" height="15"><g fill-rule="evenodd" stroke-width="1pt"><path fill="#fff" d="M0 0h640v480H0z"/><path fill="#00267f" d="M0 0h213.3v480H0z"/><path fill="#f31830" d="M426.7 0H640v480H426.7z"/></g></svg>'
+                : '<svg class="flag-svg" viewBox="0 0 640 480" width="20" height="15"><defs><clipPath id="a"><path fill-opacity=".7" d="M-85.3 0h682.6v512h-682.6z"/></clipPath></defs><g clip-path="url(#a)" transform="translate(80) scale(.94)"><g stroke-width="1pt"><path fill="#006" d="M-256 0H768v512H-256z"/><path fill="#fff" d="M-256 0v57.2l653.8 454.8H768v-454.8H-256zM768 0v57.2L114.2 512H-256V0h1024z" fill-rule="evenodd"/><path fill="#fff" d="M170.6 0v512h170.6V0H170.6zM-256 170.6v170.6H768V170.6H-256z" fill-rule="evenodd"/><path fill="#c00" d="M-256 204.8v102.4H768V204.8H-256zM204.8 0v512h102.4V0H204.8zM-256 512L85.3 341.3h76.4L-179.7 512H-256zm0-512L85.3 170.7H9L-256 38.2V0zm606.4 170.7L768 0h76.8L522.2 170.7h-76.8zm0 170.6L768 512h76.8L522.2 341.3h-76.8z" fill-rule="evenodd"/></g></g></svg>';
+            $flagSpan.html(flagSvg).css({
+                'visibility': 'visible',
+                'opacity': '1',
+                'display': 'inline-flex'
+            });
+            $btn.find('.language-text').text(text);
+        }
+        
+        // Update HTML lang attribute
+        $('html').attr('lang', lang);
+    }
+    
+    // Initialize language on page load - wait for DOM and translations
+    function initLanguage() {
+        if (typeof translations !== 'undefined' && translations[currentLang]) {
+            console.log('Initializing language:', currentLang);
+            changeLanguage(currentLang);
+        } else {
+            console.warn('Translations not loaded yet, retrying...');
+            setTimeout(initLanguage, 100);
+        }
+    }
+    
+    // Start initialization after a short delay to ensure scripts are loaded
+    setTimeout(initLanguage, 300);
+    
+    // Language test button in menu - use event delegation
+    $(document).on('click', '#testLangBtn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var currentLang = localStorage.getItem('language') || 'fr';
+        var newLang = currentLang === 'fr' ? 'en' : 'fr';
+        
+        console.log('Language button clicked, changing from', currentLang, 'to', newLang);
+        
+        changeLanguage(newLang);
+        
+        // Update button display
+        var text = newLang === 'fr' ? 'FR' : 'EN';
+        var $btn = $('#testLangBtn');
+        if ($btn.length) {
+            var $flagSpan = $btn.find('.current-language');
+            var flagSvg = newLang === 'fr' 
+                ? '<svg class="flag-svg" viewBox="0 0 640 480" width="20" height="15"><g fill-rule="evenodd" stroke-width="1pt"><path fill="#fff" d="M0 0h640v480H0z"/><path fill="#00267f" d="M0 0h213.3v480H0z"/><path fill="#f31830" d="M426.7 0H640v480H426.7z"/></g></svg>'
+                : '<svg class="flag-svg" viewBox="0 0 640 480" width="20" height="15"><defs><clipPath id="a"><path fill-opacity=".7" d="M-85.3 0h682.6v512h-682.6z"/></clipPath></defs><g clip-path="url(#a)" transform="translate(80) scale(.94)"><g stroke-width="1pt"><path fill="#006" d="M-256 0H768v512H-256z"/><path fill="#fff" d="M-256 0v57.2l653.8 454.8H768v-454.8H-256zM768 0v57.2L114.2 512H-256V0h1024z" fill-rule="evenodd"/><path fill="#fff" d="M170.6 0v512h170.6V0H170.6zM-256 170.6v170.6H768V170.6H-256z" fill-rule="evenodd"/><path fill="#c00" d="M-256 204.8v102.4H768V204.8H-256zM204.8 0v512h102.4V0H204.8zM-256 512L85.3 341.3h76.4L-179.7 512H-256zm0-512L85.3 170.7H9L-256 38.2V0zm606.4 170.7L768 0h76.8L522.2 170.7h-76.8zm0 170.6L768 512h76.8L522.2 341.3h-76.8z" fill-rule="evenodd"/></g></g></svg>';
+            $flagSpan.html(flagSvg).css({
+                'display': 'inline-flex',
+                'visibility': 'visible',
+                'opacity': '1'
+            });
+            $btn.find('.language-text').text(text);
+        }
+    });
+    
+})(jQuery);
+
